@@ -1,0 +1,12 @@
+# git ignore file
+
+# Idea
+.idea
+
+# Binaries
+[Bb]in
+obj
+packages
+
+# Nuget
+*.nupkg
