@@ -61,5 +61,13 @@ namespace Trie.Units
             var actual = _root.OptimizedAvxSearch(word);
             Assert.Equal(expected, actual);
         }
+        
+        [Theory]
+        [ClassData(typeof(TestDataGenerator))]
+        public void AlignedOptimizedAVXSearchTest(string word, bool expected)
+        {
+            var actual = _root.AlignedOptimizedAvxSearch(word);
+            Assert.Equal(expected, actual);
+        }
     }
 }
