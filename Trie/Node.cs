@@ -4,15 +4,17 @@ namespace Trie
 {
     public class Node
     {
-        public Node(char[] letters, Node[] children)
+        public Node(bool eow, char[] letters, Node[] children)
         {
+            Eow = eow;
             Letters = letters;
             Children = children;
         }
 
-        public char[] Letters { get; private set; }
-        public Node[] Children { get; private set; }
-        
+        public bool Eow { get; }
+        public char[] Letters { get; internal set; }
+        public Node[] Children { get; internal set; }
+
         private Node AddLetter(char letter, Node node)
         {
             var length = Letters.Length;
@@ -40,7 +42,7 @@ namespace Trie
                 var next = FindNext(node, letter);
                 if (next == null)
                 {
-                    next = new Node(Array.Empty<char>(), Array.Empty<Node>());
+                    next = new Node(i + 1 == word.Length, Array.Empty<char>(), Array.Empty<Node>());
                     node = node.AddLetter(letter, next);
                 }
                 else
