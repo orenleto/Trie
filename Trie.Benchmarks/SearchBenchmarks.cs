@@ -45,6 +45,16 @@ namespace Trie.Benchmarks
                 _orderedRoot.BinarySearch(word);
             }
         }
+        
+        [Benchmark]
+        [ArgumentsSource(nameof(GenerateData))]
+        public void MoveToFrontSearch(string[] words, string title)
+        {
+            foreach (var word in words)
+            {
+                _root.MoveToFrontSearch(word);
+            }
+        }
 
         public static IEnumerable<object[]> GenerateData()
         {
