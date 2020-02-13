@@ -10,6 +10,7 @@ namespace Trie.Benchmarks
     public class SearchBenchmarks
     {
         private readonly Node _root = new Node(false, Array.Empty<char>(), Array.Empty<Node>());
+        private readonly OrderedNode _orderedRoot = new OrderedNode(false, Array.Empty<char>(), Array.Empty<OrderedNode>());
 
         [GlobalSetup]
         public void GlobalSetup()
@@ -21,6 +22,7 @@ namespace Trie.Benchmarks
             {
                 var word = reader.ReadLine();
                 _root.Insert(word);
+                _orderedRoot.Insert(word);
             }
         }
 
@@ -31,6 +33,16 @@ namespace Trie.Benchmarks
             foreach (var word in words)
             {
                 _root.LinearSearch(word);
+            }
+        }
+        
+        [Benchmark]
+        [ArgumentsSource(nameof(GenerateData))]
+        public void BinarySearch(string[] words, string title)
+        {
+            foreach (var word in words)
+            {
+                _orderedRoot.BinarySearch(word);
             }
         }
 
