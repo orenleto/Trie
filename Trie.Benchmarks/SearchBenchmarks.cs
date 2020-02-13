@@ -65,7 +65,27 @@ namespace Trie.Benchmarks
                 _root.IncrementalMoveToFrontSearch(word);
             }
         }
-
+        
+        [Benchmark]
+        [ArgumentsSource(nameof(GenerateData))]
+        public void NumericsSearch(string[] words, string title)
+        {
+            foreach (var word in words)
+            {
+                _root.NumericsSearch(word);
+            }
+        }
+        
+        [Benchmark]
+        [ArgumentsSource(nameof(GenerateData))]
+        public void OptimizedAvxSearch(string[] words, string title)
+        {
+            foreach (var word in words)
+            {
+                _root.OptimizedAvxSearch(word);
+            }
+        }
+        
         public static IEnumerable<object[]> GenerateData()
         {
             var words = new List<string>(20000);

@@ -45,5 +45,21 @@ namespace Trie.Units
             var actual = _root.IncrementalMoveToFrontSearch(word);
             Assert.Equal(expected, actual);
         }
+        
+        [Theory]
+        [ClassData(typeof(TestDataGenerator))]
+        public void NumericsSearchTest(string word, bool expected)
+        {
+            var actual = _root.NumericsSearch(word);
+            Assert.Equal(expected, actual);
+        }
+        
+        [Theory]
+        [ClassData(typeof(TestDataGenerator))]
+        public void OptimizedAVXSearchTest(string word, bool expected)
+        {
+            var actual = _root.OptimizedAvxSearch(word);
+            Assert.Equal(expected, actual);
+        }
     }
 }
