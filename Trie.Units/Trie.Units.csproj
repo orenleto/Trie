@@ -16,4 +16,10 @@
       <ProjectReference Include="..\Trie\Trie.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Include="words.txt">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>
