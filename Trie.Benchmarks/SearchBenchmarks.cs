@@ -56,6 +56,16 @@ namespace Trie.Benchmarks
             }
         }
 
+        [Benchmark]
+        [ArgumentsSource(nameof(GenerateData))]
+        public void IncrementalMoveToFrontSearch(string[] words, string title)
+        {
+            foreach (var word in words)
+            {
+                _root.IncrementalMoveToFrontSearch(word);
+            }
+        }
+
         public static IEnumerable<object[]> GenerateData()
         {
             var words = new List<string>(20000);
